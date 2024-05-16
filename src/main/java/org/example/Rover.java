@@ -3,17 +3,23 @@ package org.example;
 public class Rover {
     private Position position;
 
+
     public Rover(Plateau p){
         this.position = new Position(p);
     }
-
     public Position getPosition(){
-        return this.position;
+        return position;
     }
+    public void setPosition(int x, int y, Enums.CompassDirection facing){
+        this.position.setX(x);
+        this.position.setY(y);
+        this.position.setFacing(facing);
+    }
+
 
     //let`s move
     public void roverMove(Plateau p, int numOfCells){
-        Enums.CompassDirection currentFacing = position.getFacing();
+        Enums.CompassDirection currentFacing = this.position.getFacing();
         int currentX = this.position.getX();
         int currentY = this.position.getY();
         switch (currentFacing){
@@ -23,7 +29,7 @@ public class Rover {
                 }else this.position.setY(p.y());
             }
             case S -> {
-                if(numOfCells <= p.y()){
+                if(numOfCells <= currentY){
                     this.position.setY(currentY-numOfCells);
                 }else this.position.setY(0);
             }
@@ -33,7 +39,7 @@ public class Rover {
                 }else this.position.setX(p.x());
             }
             case W -> {
-                if (numOfCells <= p.x()){
+                if (numOfCells <= currentX){
                     this.position.setX(currentX-numOfCells);
                 }else this.position.setX(0);
             }

@@ -11,11 +11,11 @@ public class Position {
         Random rd =new Random();
         this.x = rd.nextInt(p.x()+1);
         this.y = rd.nextInt(p.y()+1);
-        this.facing = Enums.CompassDirection.values()[rd.nextInt(4)+1];
+        this.facing = Enums.CompassDirection.values()[rd.nextInt(4)];
     }
 
     public int getX() {
-        return x;
+        return this.x;
     }
 
     public void setX(int x) {
@@ -31,7 +31,7 @@ public class Position {
     }
 
     public Enums.CompassDirection getFacing() {
-        return facing;
+        return this.facing;
     }
 
     public void setFacing(Enums.CompassDirection facing) {

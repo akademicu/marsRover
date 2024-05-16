@@ -10,11 +10,13 @@ public class Main {
         printString("Please insert dimensions of your world!!!");
         int x = sc.nextInt();
         int y = sc.nextInt();
-        Plateau pl = new Plateau(3,5);
+        //Plateau pl = new Plateau(3,5);
         printString("Launch your Rover!!!");
         printString("Hit ENTER");
         System.out.println();
-        Rover r = new Rover(pl);
+        Plateau p = new Plateau(x,y);
+        Rover r = new Rover(p);
+
     }
 
 
