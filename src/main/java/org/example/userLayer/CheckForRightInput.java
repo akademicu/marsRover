@@ -1,7 +1,11 @@
 package org.example.userLayer;
 
 import org.example.Main;
+import org.example.logicalLayer.Enums;
+
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CheckForRightInput {
 
@@ -35,6 +39,20 @@ public class CheckForRightInput {
             char[] output = new char[lenghtOfArr];
             sb.getChars(0,lenghtOfArr,output,0);
             return output;
+        }
+    }
+
+    public static String getTheRightDirection(Scanner sc){
+        while (true) {
+            Main.printString("Type L -- left or R -- right");
+            String str = sc.nextLine();
+            Pattern pattern = Pattern.compile("[LR]");
+            Matcher matcher = pattern.matcher(str.toUpperCase());
+            if (matcher.find()) {
+                return matcher.group(0);
+            } else {
+                System.out.println("Did`t find any L or R in input");
+            }
         }
     }
 

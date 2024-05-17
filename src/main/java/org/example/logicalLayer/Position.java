@@ -37,4 +37,11 @@ public class Position {
     public void setFacing(Enums.CompassDirection facing) {
         this.facing = facing;
     }
+
+    @Override
+    public String toString() {
+        return  " ("+x +
+                " " + y +
+                " " + facing+")";
+    }
 }
