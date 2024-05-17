@@ -1,8 +1,7 @@
-package org.example;
+package org.example.logicalLayer;
 
 public class Rover {
     private Position position;
-
 
     public Rover(Plateau p){
         this.position = new Position(p);
@@ -18,8 +17,6 @@ public class Rover {
         this.position.setY(y);
         this.position.setFacing(facing);
     }
-
-
     //let`s move
     public void roverMove(Plateau p){
         Enums.CompassDirection currentFacing = this.position.getFacing();

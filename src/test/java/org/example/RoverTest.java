@@ -1,10 +1,11 @@
 package org.example;
 
-
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
 
-import javax.swing.*;
+import org.example.logicalLayer.Enums;
+import org.example.logicalLayer.Plateau;
+import org.example.logicalLayer.Rover;
+import org.junit.jupiter.api.Test;
 
 class RoverTest {
 
@@ -14,7 +15,7 @@ class RoverTest {
     void roverMoveTest() {
         //Position position = new Position(p);
         Rover r1 = new Rover(p);
-        r1.setPosition(0,0,Enums.CompassDirection.W);
+        r1.setPosition(0,0, Enums.CompassDirection.W);
         r1.roverMove(p);
         assertEquals(0,r1.getPosition().getX());
 

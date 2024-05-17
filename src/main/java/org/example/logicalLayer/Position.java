@@ -1,4 +1,4 @@
-package org.example;
+package org.example.logicalLayer;
 
 import java.util.Random;
 
