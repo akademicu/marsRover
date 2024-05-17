@@ -10,6 +10,9 @@ public class Rover {
     public Position getPosition(){
         return position;
     }
+    public void setFacing(Enums.CompassDirection facing){
+        this.position.setFacing(facing);
+    }
     public void setPosition(int x, int y, Enums.CompassDirection facing){
         this.position.setX(x);
         this.position.setY(y);
@@ -18,36 +21,36 @@ public class Rover {
 
 
     //let`s move
-    public void roverMove(Plateau p, int numOfCells){
+    public void roverMove(Plateau p){
         Enums.CompassDirection currentFacing = this.position.getFacing();
         int currentX = this.position.getX();
         int currentY = this.position.getY();
         switch (currentFacing){
             case N -> {
-                if(numOfCells <= p.y()-currentY){
-                    this.position.setY(currentY+numOfCells);
-                }else this.position.setY(p.y());
+                if(currentY == p.y()){
+                    this.position.setY(p.y());
+                }else this.position.setY(currentY+1);
             }
             case S -> {
-                if(numOfCells <= currentY){
-                    this.position.setY(currentY-numOfCells);
-                }else this.position.setY(0);
+                if(currentY == 0){
+                    this.position.setY(0);
+                }else this.position.setY(currentY-1);
             }
             case E -> {
-                if (numOfCells <= p.x()-currentX){
-                    this.position.setX(currentX+numOfCells);
-                }else this.position.setX(p.x());
+                if (currentX == p.x()){
+                    this.position.setX(p.x());
+                }else this.position.setX(currentX+1);
             }
             case W -> {
-                if (numOfCells <= currentX){
-                    this.position.setX(currentX-numOfCells);
-                }else this.position.setX(0);
+                if (currentX == 0){
+                    this.position.setX(0);
+                }else this.position.setX(currentX-1);
             }
         }
     }
 
     // turn left or right
-    public void roverTurn(Plateau p, Enums.Direction direction){
+    public void roverTurn(Enums.Direction direction){
         Enums.CompassDirection currentFacing = position.getFacing();
         switch (currentFacing){
             case N -> {

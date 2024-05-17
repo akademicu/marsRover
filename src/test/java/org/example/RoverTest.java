@@ -15,22 +15,25 @@ class RoverTest {
         //Position position = new Position(p);
         Rover r1 = new Rover(p);
         r1.setPosition(0,0,Enums.CompassDirection.W);
-        r1.roverMove(p,4);
+        r1.roverMove(p);
         assertEquals(0,r1.getPosition().getX());
 
         r1.setPosition(0,0,Enums.CompassDirection.S);
-        r1.roverMove(p,4);
+        r1.roverMove(p);
         assertEquals(0,r1.getPosition().getY());
 
         r1.setPosition(0,5, Enums.CompassDirection.E);
-        r1.roverMove(p,7);
-        assertEquals(7,r1.getPosition().getX());
-
+        r1.roverMove(p);
+        assertEquals(6,r1.getPosition().getX()+r1.getPosition().getY());
     }
-
-
 
     @Test
     void roverTurn() {
+        Rover r1 = new Rover(p);
+        r1.setFacing(Enums.CompassDirection.N);
+        r1.roverTurn(Enums.Direction.L);
+        assertEquals(Enums.CompassDirection.W,r1.getPosition().getFacing());
+        r1.roverTurn(Enums.Direction.R);
+        assertEquals(Enums.CompassDirection.N, r1.getPosition().getFacing());
     }
 }
