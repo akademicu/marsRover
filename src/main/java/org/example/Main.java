@@ -1,9 +1,6 @@
 package org.example;
 
-import org.example.logicalLayer.Enums;
-import org.example.logicalLayer.Plateau;
-import org.example.logicalLayer.Position;
-import org.example.logicalLayer.Rover;
+import org.example.logicalLayer.*;
 import org.example.userLayer.CheckForRightInput;
 import org.example.userLayer.ExtraFun;
 
@@ -27,18 +24,19 @@ public class Main {
         printString("Any preferences for lunching?");
         System.out.println("1: Exact point \033[3mex.(2 1 S)\033[0m");
         System.out.println("2: Choose the landing sector \033[3mex. (NW, SE...)\033[0m");
-        System.out.println("3: Random land");
+        System.out.println("3: Random landing");
+        printString("Make your choice - ");
         int landChoice = CheckForRightInput.getNumber(sc);
         switch (landChoice){
-            case 1 -> rover.setPosition(2,3, Enums.CompassDirection.N);
+            case 1 -> rover.setPositionByPosition(Landing.getPositionFromUser(plateau));
             //case 2 -> methodToChooseTheSector();
-            case 3 -> rover = new Rover(plateau);
-            default -> {
+            case 3 -> new Rover(plateau);
+            default ->{
                 System.out.println("Sorry, You messed the target");
-                rover = new Rover(plateau);
+
             }
         }
-        System.exit(0);
+        //System.exit(0);
 
 
         //printString("Launching your Rover!!!");

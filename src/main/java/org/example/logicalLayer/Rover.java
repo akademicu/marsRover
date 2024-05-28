@@ -7,6 +7,10 @@ public class Rover {
         this.position = new Position(p);
     }
 
+    public void setPositionByPosition(Position position){
+        this.position = position;
+    }
+
 
 
     public Position getPosition(){

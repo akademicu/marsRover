@@ -15,8 +15,7 @@ public class CheckForRightInput {
             //Main.printString("Number = ");
             String str = sc.nextLine();
             try {
-                int num = Integer.parseInt(str);
-                return num;
+                return Integer.parseInt(str);
             } catch (Exception e) {
                 Main.printString(str + " -- Is not a num, try again");
             }

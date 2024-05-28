@@ -15,6 +15,14 @@ public class Position {
         this.facing = Enums.CompassDirection.values()[rd.nextInt(4)];
     }
 
+    public Position(int x, int y, Enums.CompassDirection facing){
+        this.x = x;
+        this.y = y;
+        this.facing = facing;
+    }
+
+
+
 
     public int getX() {
         return this.x;
