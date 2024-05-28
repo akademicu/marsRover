@@ -12,7 +12,7 @@ public class CheckForRightInput {
     //returns ony int
     public static int getNumber(Scanner sc){
         while (true) {
-            Main.printString("Number = ");
+            //Main.printString("Number = ");
             String str = sc.nextLine();
             try {
                 int num = Integer.parseInt(str);

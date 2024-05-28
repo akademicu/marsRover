@@ -15,15 +15,37 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc =new Scanner(System.in);
-       /* printString("Welcome to MARS");
+        printString("Welcome to MARS");
         printString("Please insert dimensions of your world!!!");
+
+        System.out.print("X -> length = ");
         int x = CheckForRightInput.getNumber(sc);
+        System.out.print("Y -> length = ");
         int y = CheckForRightInput.getNumber(sc);
-        printString("Launching your Rover!!!");*/
-        Plateau p = new Plateau(4,4);
-        Rover r = new Rover(p);
-        Position poz = r.getPosition();
-        ExtraFun.printTheMap(p,poz);
+        Plateau plateau = new Plateau(x,y);
+        Rover rover = new Rover(plateau);
+        printString("Any preferences for lunching?");
+        System.out.println("1: Exact point \033[3mex.(2 1 S)\033[0m");
+        System.out.println("2: Choose the landing sector \033[3mex. (NW, SE...)\033[0m");
+        System.out.println("3: Random land");
+        int landChoice = CheckForRightInput.getNumber(sc);
+        switch (landChoice){
+            case 1 -> rover.setPosition(2,3, Enums.CompassDirection.N);
+            //case 2 -> methodToChooseTheSector();
+            case 3 -> rover = new Rover(plateau);
+            default -> {
+                System.out.println("Sorry, You messed the target");
+                rover = new Rover(plateau);
+            }
+        }
+        System.exit(0);
+
+
+        //printString("Launching your Rover!!!");
+
+
+        Position poz = rover.getPosition();
+        ExtraFun.printTheMap(plateau,poz);
         while (true){
             printString("Let`s explore");
             ExtraFun.printMenu();
@@ -32,13 +54,11 @@ public class Main {
             choice=CheckForRightInput.getNumber(sc);
             switch (choice){
                 case 1 -> {
-                    r.roverMove(p);
-                    //ExtraFun.printTheMap(p,poz);
+                    rover.roverMove(plateau);
                 }
                 case 2 ->{
                     Enums.Direction direction =Enums.Direction.valueOf(CheckForRightInput.getTheRightDirection(sc));
-                    r.roverTurn(direction);
-                    //ExtraFun.printTheMap(p,poz);
+                    rover.roverTurn(direction);
                 }
                 case 3 ->{
                     printString("Type your command:\n\tM -- move one cell\n\tR -- turn right\n\tL -- turn left");
@@ -47,24 +67,19 @@ public class Main {
                     if (command != null) {
                         for (char c : command) {
                             if (c == 'M') {
-                                r.roverMove(p);
-                            } else r.roverTurn(Enums.Direction.valueOf(String.valueOf(c)));
+                                rover.roverMove(plateau);
+                            } else rover.roverTurn(Enums.Direction.valueOf(String.valueOf(c)));
                         }
                     }
-                    System.out.println("After filter command:" +new String(command));
-                    //ExtraFun.printTheMap(p,poz);
+                    System.out.println("After filtering command:" +new String(command));
                 }
             }
-            ExtraFun.printTheMap(p,poz);
+            ExtraFun.printTheMap(plateau,poz);
             if (choice == 4) break;
         }
-
-
-
     }
 
-
-    //print the string in terminal
+    //prints the string in terminal letter by letter
     public static void printString(String str){
         for(int i=0;i<str.length();i++){
             System.out.print(str.charAt(i));

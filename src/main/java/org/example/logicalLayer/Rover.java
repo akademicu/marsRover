@@ -6,6 +6,9 @@ public class Rover {
     public Rover(Plateau p){
         this.position = new Position(p);
     }
+
+
+
     public Position getPosition(){
         return position;
     }

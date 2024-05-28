@@ -7,12 +7,14 @@ public class Position {
     private int y;
     private Enums.CompassDirection facing;
 
+    //random position on the plateau
     public Position(Plateau p){
         Random rd =new Random();
         this.x = rd.nextInt(p.x()+1);
         this.y = rd.nextInt(p.y()+1);
         this.facing = Enums.CompassDirection.values()[rd.nextInt(4)];
     }
+
 
     public int getX() {
         return this.x;
